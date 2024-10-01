@@ -28,7 +28,7 @@ public class SettingsInterface extends RSInterface {
     public static final Setting BOUNTY_HUNTER = new Setting("Bounty Hunter", 0, new BountyHunterMenu(), "On", "Off");
     public static final Setting ENTITY_TARGET = new Setting("Entity Target", 0, new EntityTargetOverlayMenu(), "On", "Off");
     public static final Setting CHAT_EFFECT = new Setting("Chat Effect", 0, new ChatEffectMenu(), "Yellow (default)", "Red","Green","Cyan","Purple","White","Flash 1","Flash 2", "Flash 3","Glow 1", "Glow 2","Glow 3");
-    public static final Setting DRAW_DISTANCE = new Setting("Draw distance", 0, new DrawDistanceMenu(), "30 (default)", "40", "50", "60", "70");
+    public static final Setting DRAW_DISTANCE = new Setting("Draw distance", 6, new DrawDistanceMenu(), "30 (default)", "40", "50", "60", "70", "80", "90");
     public static final Setting PM_NOTIFICATION = new Setting("Private message notification", 1, new PmNotificationMenu(), "On", "Off");
 
     private int childInterfaceId;

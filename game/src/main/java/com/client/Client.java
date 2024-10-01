@@ -6761,7 +6761,7 @@ public class Client extends GameEngine implements RSClient {
 
 	}
 
-	public static boolean removeRoofs = true, leftClickAttack = true, chatEffectsEnabled = true, drawOrbs = true;
+	public static boolean removeRoofs = false, leftClickAttack = true, chatEffectsEnabled = true, drawOrbs = true;
 
 	private void setConfigButtonsAtStartup() {
 		Preferences.getPreferences().updateClientConfiguration();
@@ -10048,7 +10048,7 @@ public class Client extends GameEngine implements RSClient {
 		}
 
 		logger.debug("Went to end of login method.");
-		firstLoginMessage = "Xeros is being updated.";
+		firstLoginMessage = "Boneyard is being updated.";
 	}
 
 
@@ -11120,7 +11120,7 @@ public class Client extends GameEngine implements RSClient {
 								setPassword(informationFile.getStoredPassword());
 							}
 							if (informationFile.isRememberRoof()) {
-								removeRoofs = true;
+								removeRoofs = false;
 							}
 							drawLoadingText(100, "Preparing game engine");
 
@@ -13567,9 +13567,9 @@ public class Client extends GameEngine implements RSClient {
 			j %= 60;
 			int yPosition = !isResized() ? 329 : canvasHeight - 165;
 			if (j < 10)
-				aTextDrawingArea_1271.method385(0xffff00, "Xeros will be updating: " + l + ":0" + j, yPosition, 5);
+				aTextDrawingArea_1271.method385(0xffff00, "Boneyard will be updating: " + l + ":0" + j, yPosition, 5);
 			else
-				aTextDrawingArea_1271.method385(0xffff00, "Xeros will be updating: " + l + ":" + j, yPosition, 5);
+				aTextDrawingArea_1271.method385(0xffff00, "Boneyard will be updating: " + l + ":" + j, yPosition, 5);
 
 			anInt849++;
 			if (anInt849 > 75) {

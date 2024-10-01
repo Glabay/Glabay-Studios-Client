@@ -70,8 +70,8 @@ public class HoverMenuManager {
         menus.put(30120, new HoverMenu("Extra 10% in droprate boost & constant +10 strength bonus for all styles in pvm."));//dark corrupt beast
         menus.put(30021, new HoverMenu("10% increased drop rate boost."));//roc
         menus.put(30121, new HoverMenu("20% increased drop rate boost."));//Dark roc
-        menus.put(30022, new HoverMenu("The most powerful pet on Xeros."));//Kratos
-        menus.put(30122, new HoverMenu("The most powerful pet on Xeros."));//Dark Kratos
+        menus.put(30022, new HoverMenu("The most powerful pet on Boneyard."));//Kratos
+        menus.put(30122, new HoverMenu("The most powerful pet on Boneyard."));//Dark Kratos
 
         //MISC
         menus.put(21307, new HoverMenu("Contains high-tier pvp related gear."));//rouge crate
@@ -195,7 +195,7 @@ public class HoverMenuManager {
         menus.put(1464, new HoverMenu("Can be exchanged for vote points or sold to players."));
         menus.put(2996, new HoverMenu("Can be exchanged for PK points or sold to players."));
 
-        System.out.println("Xeros has loaded " + menus.size() + "x menu hovers.");
+        System.out.println("Boneyard has loaded " + menus.size() + "x menu hovers.");
     }
 
     public static int drawType() {

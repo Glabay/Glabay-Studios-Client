@@ -106,7 +106,7 @@ class LoginScreen(val client : Client) {
         Rasterizer2D.drawBox(x + 2,y + 2,Client.instance.getPixelAmt(client.loadingPercent,300),30,0x8C1111);
 
         Client.instance.newBoldFont.drawCenteredString((client.loadingText + " - " + client.loadingPercent) + "%", (x + 1) + (302 / 2), y + 21, 0xFFFFFF,0)
-        Client.instance.newBoldFont.drawCenteredString("Xeros" + " is loading - please wait...", (x) + (barWidth / 2), y - 14, 0xFFFFFF,0)
+        Client.instance.newBoldFont.drawCenteredString("Boneyard" + " is loading - please wait...", (x) + (barWidth / 2), y - 14, 0xFFFFFF,0)
     }
 
     private fun drawLoginScreen() {
@@ -155,7 +155,7 @@ class LoginScreen(val client : Client) {
             }
             LoginState.WELCOME -> {
 
-                client.newBoldFont.drawCenteredString("Welcome to Xeros",loginBoxX + (360 / 2), loginBoxY + 82,0xFFFF00,1)
+                client.newBoldFont.drawCenteredString("Welcome to Oldschool Boneyard: MMXXV",loginBoxX + (360 / 2), loginBoxY + 82,0xFFFF00,1)
 
                 listOf("New User","Existing User").forEachIndexed { index, buttonText ->
                     val buttonX = loginBoxX + 28 + if(index == 1) 160 else 0

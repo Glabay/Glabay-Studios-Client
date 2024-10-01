@@ -57,7 +57,7 @@ public final class ObjectDefinition extends DualNode implements RSObjectComposit
 					definition.actions = new String[]{ "Enter", null, null, null, null};
 					break;
 				case 36062:
-					definition.description = "Teleports you anywhere around Xeros.";
+					definition.description = "Teleports you anywhere around Boneyard.";
 					definition.actions = new String[] { "Activate", "Previous Location", null, null, null };
 					break;
 				case 4152:

@@ -636,8 +636,8 @@ public abstract class GameEngine extends Applet implements Runnable, WindowListe
                             .replace(".ws", "");
 
                     SwingUtilities.invokeLater(() ->
-                            new FatalErrorDialog("Xeros has crashed with the message: " + code + "")
-                                    .setTitle("Xeros", "Xeros has crashed")
+                            new FatalErrorDialog("Boneyard has crashed with the message: " + code + "")
+                                    .setTitle("Boneyard", "Boneyard has crashed")
                                     .addHelpButtons()
                                     .open());
                 }
