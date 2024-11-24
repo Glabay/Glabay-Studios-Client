@@ -100,7 +100,7 @@ public class Js5System {
                         }
                     }
 
-                    int VERSION = 217;
+                    int VERSION = 226;
                     if (js5ConnectState == 2) {
                         js5Socket = new BufferedNetSocket((Socket) js5SocketTask.result, 40000, 5000);
                         Buffer buffer = new Buffer(5);
