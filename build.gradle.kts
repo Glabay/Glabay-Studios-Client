@@ -33,7 +33,7 @@ allprojects {
 }
 
 dependencies {
-    implementation(project("game"))
+    implementation(project(":game"))
 }
 
 tasks.withType<JavaCompile>().configureEach {
@@ -48,20 +48,38 @@ tasks {
     }
 }
 
+application {
+    mainClass.set("Application")
+}
+
 val fatJar = task("fatJar", type = Jar::class) {
-    this.archiveBaseName.set("${project.name}-fat")
+    this.archiveBaseName.set("OSBY - Alpha")
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     manifest {
-        attributes["Implementation-Title"] = "${project.name}"
-        attributes["Implementation-Version"] = version
-        attributes["Main-Class"] = "Application"
+        attributes(
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to version,
+            "Main-Class" to "Application"
+        )
     }
     from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
     with(tasks.jar.get() as CopySpec)
 }
 
-tasks {
-    "jar" {
-        dependsOn(fatJar)
+val fatJarL = task("fatJar - local", type = Jar::class) {
+    this.archiveBaseName.set("OSBY - Local")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes(
+            "Implementation-Title" to project.name,
+            "Implementation-Version" to version,
+            "Main-Class" to "Application"
+        )
     }
+    from(configurations.runtimeClasspath.get().map({ if (it.isDirectory) it else zipTree(it) }))
+    with(tasks.jar.get() as CopySpec)
+}
+
+tasks.jar {
+    dependsOn(fatJar)
 }
