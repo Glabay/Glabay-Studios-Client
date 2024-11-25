@@ -18,6 +18,11 @@ import java.util.Map;
 public class SequenceDefinition extends DualNode implements RSSequenceDefinition {
 
     static boolean field2206 = false;
+    public static final int REV_220_SEQ_ARCHIVE_REV = 1141;
+    public static final int REV_226_SEQ_ARCHIVE_REV = 1268;
+
+    private boolean rev220FrameSounds = true;
+    private boolean rev226 = true;
 
 
     public static EvictingDualNodeHashTable cached = new EvictingDualNodeHashTable(64);
@@ -128,7 +133,7 @@ public class SequenceDefinition extends DualNode implements RSSequenceDefinition
             for(int index = 0; index < count; ++index) {
                 this.chatFrameIds[index] += buffer.readUShort() << 16;
             }
-        } else if (opcode == 13) {
+        } else if (opcode == 13 && !rev226) {
             int var11;
             int var17;
             int var18;
@@ -158,9 +163,9 @@ public class SequenceDefinition extends DualNode implements RSSequenceDefinition
 
                 var14[var4] = var13;
             }
-        } else if (opcode == 14) {
+        } else if (opcode == (rev226 ? 13 : 14)) {
             this.skeletalId = buffer.readInt();
-        } else if (opcode == 15) {
+        } else if (opcode == (rev226 ? 14 : 15)) {
             int var3 = buffer.readUShort();
             this.skeletalSounds = new HashMap();
 
@@ -188,7 +193,7 @@ public class SequenceDefinition extends DualNode implements RSSequenceDefinition
 
                 this.skeletalSounds.put(var5, var6);
             }
-        } else if (opcode == 16) {
+        } else if (opcode == (rev226 ? 15 : 16)) {
             this.rangeBegin = buffer.readUShort();
             this.rangeEnd = buffer.readUShort();
         } else if (opcode == 17) {
