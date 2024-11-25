@@ -25,10 +25,10 @@ public class Configuration {
 	public static final int SERVER_VERSION = 2;
 
 
-	public static final String CLIENT_TITLE = "Oldschool Boneyard";
+	public static final String CLIENT_TITLE = "Boneyard";
 	public static final String WEBSITE = "Xeros.io";
-	public static final String DEDICATED_SERVER_ADDRESS = "127.0.0.1";
-	public static final String DEDICATED_JS5_SERVER_ADDRESS = "127.0.0.1";
+	public static final String DEDICATED_SERVER_ADDRESS = "127.0.0.1"; // "168.149.231.247";
+	public static final String DEDICATED_JS5_SERVER_ADDRESS = "127.0.0.1"; // "168.149.231.247";
 	public static final int PORT = 52777;
 	public static final int TEST_PORT = 43594;
 	public static final int CACHE_FOLDER_VERSION = 0;
