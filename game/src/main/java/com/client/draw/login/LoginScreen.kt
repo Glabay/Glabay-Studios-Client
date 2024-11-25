@@ -155,7 +155,7 @@ class LoginScreen(val client : Client) {
             }
             LoginState.WELCOME -> {
 
-                client.newBoldFont.drawCenteredString("Welcome to Oldschool Boneyard: MMXXV",loginBoxX + (360 / 2), loginBoxY + 82,0xFFFF00,1)
+                client.newBoldFont.drawCenteredString("Welcome to Oldschool Boneyard",loginBoxX + (360 / 2), loginBoxY + 82,0xFFFF00,1)
 
                 listOf("New User","Existing User").forEachIndexed { index, buttonText ->
                     val buttonX = loginBoxX + 28 + if(index == 1) 160 else 0
