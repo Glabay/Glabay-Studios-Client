@@ -34,7 +34,7 @@ dependencies {
     implementation(group = "net.runelite", name = "flatlaf", version = "3.2.5-rl4")
 
     implementation(group = "com.google.inject", name = "guice", version = "5.0.1")
-    implementation(group = "com.google.protobuf", name = "protobuf-javalite", version = "3.21.7")
+    implementation(group = "com.google.protobuf", name = "protobuf-javalite", version = "4.28.2")
     implementation(group = "com.jakewharton.rxrelay3", name = "rxrelay", version = "3.0.1")
     implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.9.1")
     implementation(group = "io.reactivex.rxjava3", name = "rxjava", version = "3.1.2")
@@ -47,7 +47,7 @@ dependencies {
     implementation(group = "org.madlonkay", name = "desktopsupport", version = "0.6.0")
     implementation(group = "org.apache.commons", name = "commons-text", version = "1.10.0")
     implementation(group = "org.apache.commons", name = "commons-csv", version = "1.9.0")
-    implementation(group = "commons-io", name = "commons-io", version = "2.8.0")
+    implementation(group = "commons-io", name = "commons-io", version = "2.14.0")
     implementation(group = "org.jetbrains", name = "annotations", version = "22.0.0")
     implementation(group = "com.github.zafarkhaja", name = "java-semver", version = "0.9.0")
     implementation(group = "org.slf4j", name = "slf4j-api", version = slf4jVersion)
@@ -61,14 +61,14 @@ dependencies {
 
     implementation(group = "net.runelite", name = "rlawt", version = "1.3")
 
-    implementation(group = "org.lwjgl", name = "lwjgl")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl")
+    implementation(platform("org.lwjgl:lwjgl-bom:${lwjglVersion}"))
+    implementation(group = "org.lwjgl", name = "lwjgl", version = lwjglVersion)
+    implementation(group = "org.lwjgl", name = "lwjgl-opengl", version = lwjglVersion)
+    implementation(group = "org.lwjgl", name = "lwjgl-opencl", version = lwjglVersion)
     for (classifier in lwjglClassifiers) {
         implementation(group = "org.lwjgl", name = "lwjgl", classifier = classifier)
         implementation(group = "org.lwjgl", name = "lwjgl-opengl", classifier = classifier)
     }
-
-
 
     for (classifier in joglClassifiers) {
         runtimeOnly(group = "net.runelite.jogl", name = "jogl-rl", version = joglVersion, classifier = classifier)
@@ -77,10 +77,7 @@ dependencies {
 
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-x64")
     runtimeOnly(group = "net.runelite.jocl", name = "jocl", version = "1.0", classifier = "macos-arm64")
-    implementation(platform("org.lwjgl:lwjgl-bom:3.3.2"))
-    implementation(group = "org.lwjgl", name = "lwjgl")
-    implementation(group = "org.lwjgl", name = "lwjgl-opengl")
-    implementation(group = "org.lwjgl", name = "lwjgl-opencl")
+
     testAnnotationProcessor(group = "org.projectlombok", name = "lombok", version = lombokVersion)
     testCompileOnly(group = "org.projectlombok", name = "lombok", version = lombokVersion)
 
