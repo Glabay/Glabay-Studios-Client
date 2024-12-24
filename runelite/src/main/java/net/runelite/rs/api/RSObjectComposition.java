@@ -227,7 +227,7 @@ public interface RSObjectComposition extends ObjectComposition
 	void setMapIconId(int mapIconId);
 
 	@Import("boolean3")
-	void setBoolean3(boolean boolean3);
+	void setRandomizeAnimStart(boolean randomizeAnimStart);
 
 	@Import("transformVarbit")
 	void setTransformVarbit(int transformVarbit);

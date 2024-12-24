@@ -9,7 +9,6 @@ import com.client.entity.model.Mesh;
 import com.client.entity.model.Model;
 import com.client.js5.Js5List;
 import com.client.js5.util.Js5ConfigType;
-import com.client.utilities.FileOperations;
 import net.runelite.api.IterableHashTable;
 import net.runelite.rs.api.RSItemComposition;
 import net.runelite.rs.api.RSIterableNodeHashTable;
@@ -41,6 +40,7 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 	public int zoom2d;
 	public int maleModel1;
 	public String[] interfaceOptions;
+	public String[][] subops;
 	public int xan2d;
 	public int[] countObj;
 	public int yOffset2d;//
@@ -117,12 +117,9 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 		itemDef.xOffset2d = copyItemDef.xOffset2d;
 		itemDef.yOffset2d = copyItemDef.yOffset2d;
 		itemDef.interfaceOptions = copyItemDef.interfaceOptions;
-		itemDef.interfaceOptions = new String[5];
-		if (actions != null) {
-			for (int index = 0; index < actions.length; index++) {
-				itemDef.interfaceOptions[index] = actions[index];
-			}
-		}
+		if (actions != null)
+            System.arraycopy(actions, 0, itemDef.interfaceOptions, 0, actions.length);
+
 		return itemDef;
 	}
 
@@ -943,6 +940,10 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 				//itemDef.description= "Exchange this for a Vote Point.";
 				break;
 
+
+
+
+
 			case 33049:
 				itemDef.setDefaults();
 				itemDef.name = "Agility master cape";
@@ -1403,8 +1404,7 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 				itemDef.name = "Woodcutting master cape";
 				//itemDef.description= "	A cape worn by those who've overachieved.";
 				itemDef.recolorFrom = new int[] { 57022, 48811, 2, 1029, 1032, 11, 12, 14, 16, 20, 22, 2 };
-				itemDef.recolorTo = new int[] { 25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711,
-						6713, 6728 };
+				itemDef.recolorTo = new int[] { 25109, 24088, 6693, 6696, 6699, 6702, 6703, 6705, 6707, 6711, 6713, 6728 };
 				itemDef.inventoryModel = 50074;
 				itemDef.maleModel = 50075;
 				itemDef.femaleModel = 50075;
@@ -1426,26 +1426,17 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 
 	public static ItemDefinition lookup(int id) {
 		ItemDefinition itemDef = (ItemDefinition) ItemDefinition.cached.get(id);
-		if (newCustomItems(id) != null) {
-			return newCustomItems(id);
-		}
 		if (itemDef == null) {
 			byte[] data = Js5List.configs.takeFile(Js5ConfigType.ITEM, id);
 			itemDef = new ItemDefinition();
 			itemDef.setDefaults();
 			itemDef.id = id;
-			if (data != null) {
+			if (data != null)
 				itemDef.decodeValues(new Buffer(data));
-			}
-
 			itemDef.post();
-
-			if (itemDef.notedTemplate != -1) {
+			if (itemDef.notedTemplate != -1)
 				itemDef.updateNote();
-			}
-
 			customItems(id,itemDef);
-
 			cached.put(itemDef, id);
 		}
 		return itemDef;
@@ -1455,143 +1446,6 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 		if (stackable) {
 			weight = 0;
 		}
-	}
-
-	private static ItemDefinition newCustomItems(int itemId) {
-		ItemDefinition itemDef = new ItemDefinition();
-		itemDef.setDefaults();
-		switch (itemId) {
-			case 30000:
-				return copy(itemDef, 30_000, 11738, "Resource box(small)", "Open");
-			case 30001:
-				return copy(itemDef, 30_001, 11738, "Resource box(medium)", "Open");
-			case 30002:
-				return copy(itemDef, 30_002, 11738, "Resource box(large)", "Open");
-			case 22375:
-				return copy(itemDef, 22375, 22374, "Mossy key");
-
-			case 33056:
-				itemDef.setDefaults();
-				itemDef.id = 33056;
-				itemDef.inventoryModel = 65270;
-				itemDef.name = "Completionist cape";
-				//itemDef.description= "A cape worn by those who've overachieved.";
-
-				itemDef.zoom2d = 1385;
-				itemDef.xan2d = 279;
-				itemDef.yan2d = 948;
-				itemDef.zan2d = 0;
-				itemDef.xOffset2d = 0;
-				itemDef.yOffset2d = 24;
-
-				itemDef.maleModel = 65297;
-				itemDef.femaleModel = 65316;
-				//itemDef.groundActions = new String[5];
-				//itemDef.groundActions[2] = "Take";
-				itemDef.interfaceOptions = new String[5];
-				itemDef.interfaceOptions[1] = "Wear";
-				itemDef.interfaceOptions[2] = "Teleports";
-				itemDef.interfaceOptions[3] = "Features";
-				itemDef.interfaceOptions[4] = "Drop";
-				return itemDef;
-			case 33057:
-				itemDef.setDefaults();
-				itemDef.id = 33057;
-				itemDef.inventoryModel = 65273;
-				itemDef.name = "Completionist hood";
-				//itemDef.description= "A hood worn by those who've over achieved.";
-
-				itemDef.zoom2d = 760;
-				itemDef.xan2d = 11;
-				itemDef.yan2d = 0;
-				itemDef.zan2d = 0;
-				itemDef.xOffset2d = 0;
-				itemDef.yOffset2d = 0;
-
-				itemDef.maleModel = 65292;
-				itemDef.femaleModel = 65310;
-				//itemDef.groundActions = new String[5];
-				//itemDef.groundActions[2] = "Take";
-				itemDef.interfaceOptions = new String[5];
-				itemDef.interfaceOptions[1] = "Wear";
-				return itemDef;
-		}
-
-		return null;
-	}
-
-
-	void method2790(ItemDefinition var1, ItemDefinition var2) {
-		inventoryModel = var1.inventoryModel * 1;
-		zoom2d = 1 * var1.zoom2d;
-		xan2d = var1.xan2d * 1;
-		yan2d = var1.yan2d * 1;
-		zan2d = var1.zan2d * 1;
-		xOffset2d = 1 * var1.xOffset2d;
-		yOffset2d = var1.yOffset2d * 1;
-		recolorFrom = var1.recolorFrom;
-		recolorTo = var1.recolorTo;
-		retextureFrom = var1.retextureFrom;
-		retextureTo = var1.retextureTo;
-		stackable = var1.stackable;
-		name = var2.name;
-		price = 0;
-	}
-
-	void method2789(ItemDefinition var1, ItemDefinition var2) {
-		inventoryModel = var1.inventoryModel * 1;
-		zoom2d = var1.zoom2d * 1;
-		xan2d = 1 * var1.xan2d;
-		yan2d = 1 * var1.yan2d;
-		zan2d = 1 * var1.zan2d;
-		xOffset2d = 1 * var1.xOffset2d;
-		yOffset2d = var1.yOffset2d * 1;
-		recolorFrom = var2.recolorFrom;
-		recolorTo = var2.recolorTo;
-		// originalTextureColors = var2.originalTextureColors;
-		// modifiedTextureColors = var2.modifiedTextureColors;
-		name = var2.name;
-		members = var2.members;
-		stackable = var2.stackable;
-		maleModel = 1 * var2.maleModel;
-		maleModel1 = 1 * var2.maleModel1;
-		maleModel2 = 1 * var2.maleModel2;
-		femaleModel = var2.femaleModel * 1;
-		femaleModel1 = var2.femaleModel1 * 1;
-		femaleModel2 = 1 * var2.femaleModel2;
-		maleHeadModel = 1 * var2.maleHeadModel;
-		maleHeadModel2 = var2.maleHeadModel2 * 1;
-		femaleHeadModel = var2.femaleHeadModel * 1;
-		femaleHeadModel2 = var2.femaleHeadModel2 * 1;
-		team = var2.team * 1;
-		groundActions = var2.groundActions;
-		interfaceOptions = new String[5];
-		equipActions = new String[5];
-		if (null != var2.interfaceOptions) {
-			for (int var4 = 0; var4 < 4; ++var4) {
-				interfaceOptions[var4] = var2.interfaceOptions[var4];
-			}
-		}
-
-		interfaceOptions[4] = "Discard";
-		price = 0;
-	}
-
-	void toPlaceholder(ItemDefinition var1, ItemDefinition var2) {
-		inventoryModel = var1.inventoryModel * 1;
-		zoom2d = 1 * var1.zoom2d;
-		xan2d = var1.xan2d * 1;
-		yan2d = var1.yan2d * 1;
-		zan2d = var1.zan2d * 1;
-		xOffset2d = 1 * var1.xOffset2d;
-		yOffset2d = var1.yOffset2d * 1;
-		recolorFrom = var1.recolorFrom;
-		recolorTo = var1.recolorTo;
-		retextureFrom = var1.retextureFrom;
-		retextureTo = var1.retextureTo;
-		stackable = var1.stackable;
-		name = var2.name;
-		price = 0;
 	}
 
 	public static Sprite getSprite(int itemId, int stackSize, int outlineColor, boolean noted, int border,int shadow) {
@@ -1986,21 +1840,6 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 		glowColor = -1;
 	}
 
-	private void copy(ItemDefinition copy) {
-		yan2d = copy.yan2d;
-		xan2d = copy.xan2d;
-		zan2d = copy.zan2d;
-		resizeX = copy.resizeX;
-		resizeY = copy.resizeY;
-		resizeZ = copy.resizeZ;
-		zoom2d = copy.zoom2d;
-		xOffset2d = copy.xOffset2d;
-		yOffset2d = copy.yOffset2d;
-		inventoryModel = copy.inventoryModel;
-		stackable = copy.stackable;
-
-	}
-
 	private void updateNote() {
 		ItemDefinition itemDef = lookup(notedTemplate);
 		inventoryModel = itemDef.inventoryModel;
@@ -2299,6 +2138,23 @@ public final class ItemDefinition extends DualNode implements RSItemComposition 
 
 			} else if (opcode == 42) {
 				shiftClickIndex = stream.readByte();
+			} else if (opcode == 43) {
+				int opId = stream.readUnsignedByte();
+				if (subops == null)
+					subops = new String[5][];
+
+				boolean valid = opId >= 0 && opId < 5;
+				if (valid && subops[opId] == null)
+					subops[opId] = new String[20];
+
+				while (true) {
+					int subopId = stream.readUnsignedByte() - 1;
+					if (subopId == -1) break;
+
+					String op = stream.readString();
+					if (valid && subopId >= 0 && subopId < 20)
+						subops[opId][subopId] = op;
+				}
 			} else if (opcode == 65) {
 				isTradable = true;
 			} else if (opcode == 75) {

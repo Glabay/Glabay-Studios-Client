@@ -4,7 +4,6 @@ import com.client.Buffer;
 import com.client.Client;
 import com.client.Renderable;
 import com.client.audio.ObjectSound;
-import com.client.audio.StaticSound;
 import com.client.definitions.FloorOverlayDefinition;
 import com.client.definitions.FloorUnderlayDefinition;
 import com.client.definitions.ObjectDefinition;
@@ -223,7 +222,7 @@ public final class MapRegion {
                     if (-1 == var16.animation && var16.configs == null) {
                         var30 = var16.getModel(22, face, var23, var25, var24, var26);
                     } else {
-                        var30 = new SceneObject(id, face, 22, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                        var30 = new SceneObject(id, face, 22, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                     }
 
                     var43.newFloorDecoration(z, x, y, var24, var30, var27, var29);
@@ -235,7 +234,7 @@ public final class MapRegion {
                         if (var16.animation == -1 && null == var16.configs) {
                             var30 = var16.getModel(type, face, var23, var25, var24, var26);
                         } else {
-                            var30 = new SceneObject(id, face, type, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                            var30 = new SceneObject(id, face, type, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                         }
 
                         var43.method4166(z, x, y, var24, 1, 1, var30, 0, var27, var29);
@@ -246,7 +245,7 @@ public final class MapRegion {
                         if (var16.animation == -1 && var16.configs == null) {
                             var30 = var16.getModel(0, face, var23, var25, var24, var26);
                         } else {
-                            var30 = new SceneObject(id, face, 0, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                            var30 = new SceneObject(id, face, 0, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                         }
 
                         var43.newBoundaryObject(z, x, y, var24, var30, (Renderable) null, field721[face], 0, var27, var29);
@@ -257,7 +256,7 @@ public final class MapRegion {
                         if (var16.animation == -1 && var16.configs == null) {
                             var30 = var16.getModel(1, face, var23, var25, var24, var26);
                         } else {
-                            var30 = new SceneObject(id, face, 1, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                            var30 = new SceneObject(id, face, 1, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                         }
 
                         var43.newBoundaryObject(z, x, y, var24, var30, (Renderable) null, field722[face], 0, var27, var29);
@@ -274,8 +273,8 @@ public final class MapRegion {
                                 var31 = var16.getModel(2, face + 4, var23, var25, var24, var26);
                                 var32 = var16.getModel(2, var36, var23, var25, var24, var26);
                             } else {
-                                var31 = new SceneObject(id, 4 + face, 2, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
-                                var32 = new SceneObject(id, var36, 2, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                var31 = new SceneObject(id, 4 + face, 2, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
+                                var32 = new SceneObject(id, var36, 2, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                             }
 
                             var43.newBoundaryObject(z, x, y, var24, var31, var32, field721[face], field721[var36], var27, var29);
@@ -286,7 +285,7 @@ public final class MapRegion {
                             if (-1 == var16.animation && null == var16.configs) {
                                 var30 = var16.getModel(3, face, var23, var25, var24, var26);
                             } else {
-                                var30 = new SceneObject(id, face, 3, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                var30 = new SceneObject(id, face, 3, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                             }
 
                             var43.newBoundaryObject(z, x, y, var24, var30, (Renderable) null, field722[face], 0, var27, var29);
@@ -297,7 +296,7 @@ public final class MapRegion {
                             if (-1 == var16.animation && null == var16.configs) {
                                 var30 = var16.getModel(type, face, var23, var25, var24, var26);
                             } else {
-                                var30 = new SceneObject(id, face, type, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                var30 = new SceneObject(id, face, type, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                             }
 
                             var43.method4166(z, x, y, var24, 1, 1, var30, 0, var27, var29);
@@ -308,7 +307,7 @@ public final class MapRegion {
                             if (-1 == var16.animation && var16.configs == null) {
                                 var30 = var16.getModel(4, face, var23, var25, var24, var26);
                             } else {
-                                var30 = new SceneObject(id, face, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                var30 = new SceneObject(id, face, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                             }
 
                             var43.newWallDecoration(z, x, y, var24, var30, (Renderable) null, field721[face], 0, 0, 0, var27, var29);
@@ -325,7 +324,7 @@ public final class MapRegion {
                                 if (var16.animation == -1 && var16.configs == null) {
                                     var33 = var16.getModel(4, face, var23, var25, var24, var26);
                                 } else {
-                                    var33 = new SceneObject(id, face, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                    var33 = new SceneObject(id, face, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                                 }
 
                                 var43.newWallDecoration(z, x, y, var24, var33, (Renderable) null, field721[face], 0, field713[face] * var36, var36 * field725[face], var27, var29);
@@ -339,7 +338,7 @@ public final class MapRegion {
                                 if (-1 == var16.animation && null == var16.configs) {
                                     var33 = var16.getModel(4, face + 4, var23, var25, var24, var26);
                                 } else {
-                                    var33 = new SceneObject(id, face + 4, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                    var33 = new SceneObject(id, face + 4, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                                 }
 
                                 var43.newWallDecoration(z, x, y, var24, var33, (Renderable) null, 256, face, var36 * field715[face], var36 * field726[face], var27, var29);
@@ -348,7 +347,7 @@ public final class MapRegion {
                                 if (var16.animation == -1 && null == var16.configs) {
                                     var30 = var16.getModel(4, 4 + var39, var23, var25, var24, var26);
                                 } else {
-                                    var30 = new SceneObject(id, 4 + var39, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                    var30 = new SceneObject(id, 4 + var39, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                                 }
 
                                 var43.newWallDecoration(z, x, y, var24, var30, (Renderable) null, 256, var39, 0, 0, var27, var29);
@@ -365,8 +364,8 @@ public final class MapRegion {
                                     var33 = var16.getModel(4, 4 + face, var23, var25, var24, var26);
                                     var34 = var16.getModel(4, 4 + var35, var23, var25, var24, var26);
                                 } else {
-                                    var33 = new SceneObject(id, face + 4, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
-                                    var34 = new SceneObject(id, 4 + var35, 4, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                                    var33 = new SceneObject(id, face + 4, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
+                                    var34 = new SceneObject(id, 4 + var35, 4, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                                 }
 
                                 var43.newWallDecoration(z, x, y, var24, var33, var34, 256, face, var36 * field715[face], var36 * field726[face], var27, var29);
@@ -377,7 +376,7 @@ public final class MapRegion {
                     if (var16.animation == -1 && var16.configs == null) {
                         var30 = var16.getModel(10, face, var23, var25, var24, var26);
                     } else {
-                        var30 = new SceneObject(id, face, 10, plane, x, y, var16.animation, var16.boolean3, (Renderable)null);
+                        var30 = new SceneObject(id, face, 10, plane, x, y, var16.animation, var16.randomizeAnimStart, (Renderable)null);
                     }
 
                     if (var30 != null) {
@@ -454,7 +453,7 @@ public final class MapRegion {
                     if (var9.animation == -1 && null == var9.configs) {
                         renderable = var9.getEntity(22, face, heights, centerX, mean, centerY);
                     } else {
-                        renderable = new SceneObject(id, face, 22, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                        renderable = new SceneObject(id, face, 22, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                     }
 
                     scene.newFloorDecoration(z, x, y, mean, renderable, var20, var22);
@@ -467,7 +466,7 @@ public final class MapRegion {
                     if (var9.animation == -1 && null == var9.configs) {
                         renderable = var9.getEntity(type, face, heights, centerX, mean, centerY);
                     } else {
-                        renderable = new SceneObject(id, face, type, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                        renderable = new SceneObject(id, face, type, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                     }
 
                     scene.method4166(z, x, y, mean, 1, 1, renderable, 0, var20, var22);
@@ -483,7 +482,7 @@ public final class MapRegion {
                     if (-1 == var9.animation && null == var9.configs) {
                         renderable = var9.getEntity(0, face, heights, centerX, mean, centerY);
                     } else {
-                        renderable = new SceneObject(id, face, 0, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                        renderable = new SceneObject(id, face, 0, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                     }
 
                     scene.newBoundaryObject(z, x, y, mean, renderable, (Renderable) null, field721[face], 0, var20, var22);
@@ -537,7 +536,7 @@ public final class MapRegion {
                     if (-1 == var9.animation && null == var9.configs) {
                         renderable = var9.getEntity(1, face, heights, centerX, mean, centerY);
                     } else {
-                        renderable = new SceneObject(id, face, 1, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                        renderable = new SceneObject(id, face, 1, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                     }
 
                     scene.newBoundaryObject(z, x, y, mean, renderable, (Renderable) null, field722[face], 0, var20, var22);
@@ -567,8 +566,8 @@ public final class MapRegion {
                             var30 = var9.getEntity(2, 4 + face, heights, centerX, mean, centerY);
                             var31 = var9.getEntity(2, var29, heights, centerX, mean, centerY);
                         } else {
-                            var30 = new SceneObject(id, face + 4, 2, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
-                            var31 = new SceneObject(id, var29, 2, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                            var30 = new SceneObject(id, face + 4, 2, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
+                            var31 = new SceneObject(id, var29, 2, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                         }
 
                         scene.newBoundaryObject(z, x, y, mean, var30, var31, field721[face], field721[var29], var20, var22);
@@ -600,7 +599,7 @@ public final class MapRegion {
                         if (-1 == var9.animation && var9.configs == null) {
                             renderable = var9.getEntity(3, face, heights, centerX, mean, centerY);
                         } else {
-                            renderable = new SceneObject(id, face, 3, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                            renderable = new SceneObject(id, face, 3, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                         }
 
                         scene.newBoundaryObject(z, x, y, mean, renderable, (Renderable) null, field722[face], 0, var20, var22);
@@ -624,7 +623,7 @@ public final class MapRegion {
                         if (-1 == var9.animation && null == var9.configs) {
                             renderable = var9.getEntity(type, face, heights, centerX, mean, centerY);
                         } else {
-                            renderable = new SceneObject(id, face, type, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                            renderable = new SceneObject(id, face, type, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                         }
 
                         scene.method4166(z, x, y, mean, 1, 1, renderable, 0, var20, var22);
@@ -640,7 +639,7 @@ public final class MapRegion {
                         if (-1 == var9.animation && var9.configs == null) {
                             renderable = var9.getEntity(4, face, heights, centerX, mean, centerY);
                         } else {
-                            renderable = new SceneObject(id, face, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                            renderable = new SceneObject(id, face, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                         }
 
                         scene.newWallDecoration(z, x, y, mean, renderable, (Renderable) null, field721[face], 0, 0, 0, var20, var22);
@@ -657,7 +656,7 @@ public final class MapRegion {
                             if (-1 == var9.animation && null == var9.configs) {
                                 var34 = var9.getEntity(4, face, heights, centerX, mean, centerY);
                             } else {
-                                var34 = new SceneObject(id, face, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                                var34 = new SceneObject(id, face, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                             }
 
                             scene.newWallDecoration(z, x, y, mean, var34, (Renderable) null, field721[face], 0, field713[face] * var29, var29 * field725[face], var20, var22);
@@ -671,7 +670,7 @@ public final class MapRegion {
                             if (var9.animation == -1 && null == var9.configs) {
                                 var34 = var9.getEntity(4, face + 4, heights, centerX, mean, centerY);
                             } else {
-                                var34 = new SceneObject(id, 4 + face, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                                var34 = new SceneObject(id, 4 + face, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                             }
 
                             scene.newWallDecoration(z, x, y, mean, var34, (Renderable) null, 256, face, var29 * field715[face], var29 * field726[face], var20, var22);
@@ -680,7 +679,7 @@ public final class MapRegion {
                             if (var9.animation == -1 && null == var9.configs) {
                                 renderable = var9.getEntity(4, var24 + 4, heights, centerX, mean, centerY);
                             } else {
-                                renderable = new SceneObject(id, 4 + var24, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                                renderable = new SceneObject(id, 4 + var24, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                             }
 
                             scene.newWallDecoration(z, x, y, mean, renderable, (Renderable) null, 256, var24, 0, 0, var20, var22);
@@ -697,8 +696,8 @@ public final class MapRegion {
                                 var34 = var9.getEntity(4, face + 4, heights, centerX, mean, centerY);
                                 var27 = var9.getEntity(4, 4 + var28, heights, centerX, mean, centerY);
                             } else {
-                                var34 = new SceneObject(id, face + 4, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
-                                var27 = new SceneObject(id, var28 + 4, 4, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                                var34 = new SceneObject(id, face + 4, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
+                                var27 = new SceneObject(id, var28 + 4, 4, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                             }
 
                             scene.newWallDecoration(z, x, y, mean, var34, var27, 256, face, field715[face] * var29, field726[face] * var29, var20, var22);
@@ -710,7 +709,7 @@ public final class MapRegion {
                     if (-1 == var9.animation && var9.configs == null) {
                         renderable = var9.getEntity(10, face, heights, centerX, mean, centerY);
                     } else {
-                        renderable = new SceneObject(id, face, 10, z, x, y, var9.animation, var9.boolean3, (Renderable)null);
+                        renderable = new SceneObject(id, face, 10, z, x, y, var9.animation, var9.randomizeAnimStart, (Renderable)null);
                     }
 
                     if (renderable != null && scene.method4166(z, x, y, mean, var10, var11, renderable, 11 == type ? 256 : 0, var20, var22) && var9.clipped) {

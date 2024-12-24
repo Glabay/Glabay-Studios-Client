@@ -33,7 +33,9 @@ public final class NpcDefinition extends DualNode implements RSNPCComposition {
 
 	public static EvictingDualNodeHashTable npcsCached = new EvictingDualNodeHashTable(64);
 
+	public static final int REV_210_NPC_ARCHIVE_REV = 1493;
 	private static int defaultHeadIconArchive = -1;
+	private boolean rev210HeadIcons = true;
 
 	public static void init(int headIconArchive) {
 		defaultHeadIconArchive = headIconArchive;
@@ -996,23 +998,30 @@ public final class NpcDefinition extends DualNode implements RSNPCComposition {
 		} else {
 			int var5;
 			if (var2 == 102) {
-				index = buffer.readUnsignedByte();
-				var4 = 0;
-
-				for(var5 = index; var5 != 0; var5 >>= 1) {
-					++var4;
+				if (!rev210HeadIcons) {
+					headIconArchiveIds = new int[defaultHeadIconArchive];
+					headIconSpriteIndex = new short[(short) buffer.readUShort()];
 				}
+				else {
+					index = buffer.readUnsignedByte();
+					var4 = 0;
 
-				headIconArchiveIds = new int[var4];
-				headIconSpriteIndex = new short[var4];
+					for (var5 = index; var5 != 0; var5 >>= 1) {
+						++var4;
+					}
 
-				for(int var6 = 0; var6 < var4; ++var6) {
-					if ((index & 1 << var6) == 0) {
-						headIconArchiveIds[var6] = -1;
-						headIconSpriteIndex[var6] = -1;
-					} else {
-						headIconArchiveIds[var6] = buffer.readNullableLargeSmart();
-						headIconSpriteIndex[var6] = (short)buffer.readShortSmartSub();
+					headIconArchiveIds = new int[var4];
+					headIconSpriteIndex = new short[var4];
+
+					for (int var6 = 0; var6 < var4; ++var6) {
+						if ((index & 1 << var6) == 0) {
+							headIconArchiveIds[var6] = -1;
+							headIconSpriteIndex[var6] = -1;
+						}
+						else {
+							headIconArchiveIds[var6] = buffer.readNullableLargeSmart();
+							headIconSpriteIndex[var6] = (short) buffer.readShortSmartSub();
+						}
 					}
 				}
 			} else if (var2 == 103) {
@@ -1022,6 +1031,10 @@ public final class NpcDefinition extends DualNode implements RSNPCComposition {
 					isInteractable = false;
 				} else if (var2 == 109) {
 					smoothWalk = false;
+				} else if (var2 == 111) {
+					// removed in 220
+					isPet = true;
+					lowPriorityFollowerOps = true;
 				} else if (var2 == 114) {
 					runAnimation = buffer.readUShort();
 				} else if (var2 == 115) {
@@ -1037,9 +1050,11 @@ public final class NpcDefinition extends DualNode implements RSNPCComposition {
 					crawlRotateLeftAnimation = buffer.readUShort();
 					crawlRotateRightAnimation = buffer.readUShort();
 				} else if (var2 == 122) {
-					lowPriorityFollowerOps = true;
-				} else if (var2 == 123) {
 					isPet = true;
+				} else if (var2 == 123) {
+					lowPriorityFollowerOps = true;
+				} else if (var2 == 124) {
+					heightScale = buffer.readUShort();
 				} else if (var2 == 249) {
 					params = Buffer.readStringIntParameters(buffer, params);
 				}

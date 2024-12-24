@@ -530,7 +530,7 @@ public final class ObjectDefinition extends DualNode implements RSObjectComposit
 		clipType = -1;
 		nonFlatShading = false;
 		modelClipped = false;
-		boolean3 = true;
+		randomizeAnimStart = true;
 		animation = -1;
 		int2 = 16;
 		interactType = 2;
@@ -1008,7 +1008,7 @@ public final class ObjectDefinition extends DualNode implements RSObjectComposit
 			} else if (opcode == 82) {
 				this.minimapFunction = buffer.readUShort();
 			} else if (opcode == 89) {
-				this.boolean3 = false;
+				this.randomizeAnimStart = true;
 			} else if (opcode == 249) {
 				this.params = Buffer.readStringIntParameters(buffer, this.params);
 			}
@@ -1100,7 +1100,7 @@ public final class ObjectDefinition extends DualNode implements RSObjectComposit
 
 	public IterableNodeHashTable params = null;
 
-	public boolean boolean3;
+	public boolean randomizeAnimStart;
 	public int varpID;
 	public int int2;
 	private int[] models;
@@ -1506,7 +1506,7 @@ public final class ObjectDefinition extends DualNode implements RSObjectComposit
 	}
 
 	@Override
-	public void setBoolean3(boolean boolean3) {
+	public void setRandomizeAnimStart(boolean randomizeAnimStart) {
 
 	}
 
